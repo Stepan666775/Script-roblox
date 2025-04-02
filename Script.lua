@@ -22,13 +22,13 @@ end)
 local Tab = Window:NewTab("Другое")
 local Section = Tab:NewSection("SUS")
 
-Section:NewToggle("ToggleText", "ToggleInfo", function(state)
+Section:NewToggle("Палка", "Создаёт палку", function(state)
     if state then
         local RunService = game:GetService("RunService")
 
 -- Создаем парт
         local newPart = Instance.new("Part")
-        newPart.Size = Vector3.new(5, 1, 1)
+        newPart.Size = Vector3.new(1, 1, 5)
         newPart.BrickColor = BrickColor.new("Bright orange")
         newPart.Anchored = true
         newPart.Parent = game.Workspace
@@ -52,3 +52,38 @@ Section:NewToggle("ToggleText", "ToggleInfo", function(state)
     end
 end)
 
+local Section = Tab:NewSection("ПОЛЕЗНОЕ")
+Section:NewButton("ButtonText", "ButtonInfo", function()
+    -- Создаем инструмент
+local tool = Instance.new("Tool")
+tool.Name = "TeleportTool"
+tool.Parent = game.StarterPack
+
+-- Создаем Handle (ручку)
+local handle = Instance.new("Part")
+handle.Name = "Handle" -- Обязательное имя для ручки инструмента
+handle.Size = Vector3.new(1, 1, 2) -- Размер ручки
+handle.BrickColor = BrickColor.new("Bright purple") -- Цвет
+handle.Parent = tool -- Помещаем в инструмент
+
+-- Создаем скрипт внутри инструмента
+local script = Instance.new("Script")
+script.Parent = tool
+
+script.Source = [[
+    local tool = script.Parent
+    local player = game.Players.LocalPlayer
+    local character = player.Character or player.CharacterAdded:Wait()
+    local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
+    local mouse = player:GetMouse()
+
+    local function onActivated()
+        local target = mouse.Hit
+        if target then
+            humanoidRootPart.CFrame = CFrame.new(target.Position + Vector3.new(0, 5, 0))
+        end
+    end
+
+    tool.Activated:Connect(onActivated)
+]] 
+end)
