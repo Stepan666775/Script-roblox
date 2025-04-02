@@ -28,8 +28,8 @@ Section:NewToggle("ToggleText", "ToggleInfo", function(state)
 
 -- Создаем парт
         local newPart = Instance.new("Part")
-        newPart.Size = Vector3.new(5, 1, 5)
-        newPart.BrickColor = BrickColor.new("Bright blue")
+        newPart.Size = Vector3.new(5, 1, 1)
+        newPart.BrickColor = BrickColor.new("Bright orange")
         newPart.Anchored = true
         newPart.Parent = game.Workspace
 
@@ -41,7 +41,7 @@ Section:NewToggle("ToggleText", "ToggleInfo", function(state)
 -- Функция для обновления позиции и вращения
             local function updatePartPositionAndRotation()
     -- Смещаем парт: 5 вверх, 3 вперед
-            newPart.CFrame = humanoidRootPart.CFrame * CFrame.new(0, -4, 3)
+            newPart.CFrame = humanoidRootPart.CFrame * CFrame.new(0, -1.5, -2.5)
         end
 
 -- Подключаем обновление к каждому кадру
