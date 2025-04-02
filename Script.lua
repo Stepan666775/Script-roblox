@@ -51,39 +51,3 @@ Section:NewToggle("Палка", "Создаёт палку", function(state)
         connection:Disconnect() -- Отключаем цикл обновления
     end
 end)
-
-local Section = Tab:NewSection("ПОЛЕЗНОЕ")
-Section:NewButton("ButtonText", "ButtonInfo", function()
-    local Players = game:GetService("Players")
-
-Players.PlayerAdded:Connect(function(player)
-    local backpack = player:WaitForChild("Backpack") 
-        if not backpack:FindFirstChild("TeleportTool") then
-                -- Создаем инструмент
-            local tool = Instance.new("Tool")
-            tool.Name = "TeleportTool"
-            tool.RequiresHandle = false
-            tool.Parent = backpack
-
-                -- Создаем скрипт внутри инструмента
-            local script = Instance.new("Script")
-            script.Parent = tool
-            script.Source = [[
-                local tool = script.Parent
-                local player = game.Players.LocalPlayer
-                local character = player.Character or player.CharacterAdded:Wait()
-                local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
-                local mouse = player:GetMouse()
-
-                local function onActivated()
-                    local target = mouse.Hit
-                    if target then
-                        humanoidRootPart.CFrame = CFrame.new(target.Position + Vector3.new(0, 5, 0))
-                    end
-                end
-
-                tool.Activated:Connect(onActivated)
-            ]]
-        end
-    end
-end) 
