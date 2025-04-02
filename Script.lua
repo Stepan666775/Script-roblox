@@ -54,36 +54,36 @@ end)
 
 local Section = Tab:NewSection("ПОЛЕЗНОЕ")
 Section:NewButton("ButtonText", "ButtonInfo", function()
-    -- Создаем инструмент
-local tool = Instance.new("Tool")
-tool.Name = "TeleportTool"
-tool.Parent = game.StarterPack
+    local Players = game:GetService("Players")
 
--- Создаем Handle (ручку)
-local handle = Instance.new("Part")
-handle.Name = "Handle" -- Обязательное имя для ручки инструмента
-handle.Size = Vector3.new(1, 1, 2) -- Размер ручки
-handle.BrickColor = BrickColor.new("Bright purple") -- Цвет
-handle.Parent = tool -- Помещаем в инструмент
+Players.PlayerAdded:Connect(function(player)
+    local backpack = player:WaitForChild("Backpack") 
+        if not backpack:FindFirstChild("TeleportTool") then
+                -- Создаем инструмент
+            local tool = Instance.new("Tool")
+            tool.Name = "TeleportTool"
+            tool.RequiresHandle = false
+            tool.Parent = backpack
 
--- Создаем скрипт внутри инструмента
-local script = Instance.new("Script")
-script.Parent = tool
+                -- Создаем скрипт внутри инструмента
+            local script = Instance.new("Script")
+            script.Parent = tool
+            script.Source = [[
+                local tool = script.Parent
+                local player = game.Players.LocalPlayer
+                local character = player.Character or player.CharacterAdded:Wait()
+                local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
+                local mouse = player:GetMouse()
 
-script.Source = [[
-    local tool = script.Parent
-    local player = game.Players.LocalPlayer
-    local character = player.Character or player.CharacterAdded:Wait()
-    local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
-    local mouse = player:GetMouse()
+                local function onActivated()
+                    local target = mouse.Hit
+                    if target then
+                        humanoidRootPart.CFrame = CFrame.new(target.Position + Vector3.new(0, 5, 0))
+                    end
+                end
 
-    local function onActivated()
-        local target = mouse.Hit
-        if target then
-            humanoidRootPart.CFrame = CFrame.new(target.Position + Vector3.new(0, 5, 0))
+                tool.Activated:Connect(onActivated)
+            ]]
         end
     end
-
-    tool.Activated:Connect(onActivated)
-]] 
-end)
+end) 
