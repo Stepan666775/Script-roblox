@@ -1,4 +1,4 @@
-local Name = game.Players.LocalPlayer.Character.Name
+-- local Name = game.Players.LocalPlayer.Character.Name
 
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Robojini/Tuturial_UI_Library/main/UI_Template_1"))()
 local Window = Library.CreateLib("CheeseScript V0.1", "RJTheme3") 
@@ -6,7 +6,7 @@ local Window = Library.CreateLib("CheeseScript V0.1", "RJTheme3")
 local Tab = Window:NewTab("Инфо")
 local Section = Tab:NewSection("ИНФОРМАЦИЯ")
 
-Section:NewLabel("Никнейм:", Name)
+Section:NewLabel("Создатель: Сыр") 
 
 local Tab = Window:NewTab("Игрок")
 local Section = Tab:NewSection("ГУМАНОЙД")
