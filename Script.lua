@@ -2,11 +2,12 @@ local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Roboj
 local Window = Library.CreateLib("CheeseScript V0.1", "RJTheme3") 
 
 local Tab = Window:NewTab("Инфо")
+local Section = Tab:NewSection("ИНФОРМАЦИЯ")
 
 Section:NewLabel("Никнейм:", game.Players.LocalPlayer.Character.Name)
 
 local Tab = Window:NewTab("Игрок")
-local Section = Tab:NewSection("Гуманойд")
+local Section = Tab:NewSection("ГУМАНОЙД")
 
 Section:NewSlider("Скорость бега", "Увиличивает/Уменьшает скорость бега", 500, 0, function(s) -- 500 (Макс. значение) | 0 (Мин. значение)
     game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = s
