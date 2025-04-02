@@ -1,4 +1,4 @@
-Name = game.Players.LocalPlayer.Character.Name
+local Name = game.Players.LocalPlayer.Character.Name
 
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Robojini/Tuturial_UI_Library/main/UI_Template_1"))()
 local Window = Library.CreateLib("CheeseScript V0.1", "RJTheme3") 
