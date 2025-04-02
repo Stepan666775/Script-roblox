@@ -4,6 +4,10 @@ local Window = Library.CreateLib("CheeseScript V0.1", "RJTheme3")
 local Tab = Window:NewTab("Игрок")
 local Section = Tab:NewSection("Гуманойд")
 
-Section:NewSlider("SliderText", "SliderInfo", 500, 0, function(s) -- 500 (Макс. значение) | 0 (Мин. значение)
+Section:NewSlider("Скорость бега", "SliderInfo", 500, 0, function(s) -- 500 (Макс. значение) | 0 (Мин. значение)
+    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = s
+end)
+
+Section:NewSlider("Сила прыжка", "SliderInfo", 500, 0, function(s) -- 500 (Макс. значение) | 0 (Мин. значение)
     game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = s
 end)
