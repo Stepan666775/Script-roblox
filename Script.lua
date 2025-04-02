@@ -32,6 +32,7 @@ Section:NewToggle("Палка", "Создаёт палку", function(state)
         newPart.BrickColor = BrickColor.new("Bright orange")
         newPart.Anchored = true
         newPart.Parent = game.Workspace
+        newPart.CanCollide = false
 
 -- Получаем игрока и его персонажа
         local player = game.Players.LocalPlayer
