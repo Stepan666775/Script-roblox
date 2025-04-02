@@ -4,7 +4,7 @@ local Window = Library.CreateLib("CheeseScript V0.1", "RJTheme3")
 local Tab = Window:NewTab("Инфо")
 local Section = Tab:NewSection("Иноформация")
 
-Section:NewLabel("Никнейм:", Game.Players.LocalPlayer.Name)
+Section:NewLabel("Никнейм:", game.Players.LocalPlayer.Name)
 
 local Tab = Window:NewTab("Игрок")
 local Section = Tab:NewSection("Гуманойд")
