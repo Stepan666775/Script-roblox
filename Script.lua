@@ -27,8 +27,8 @@ Section:NewToggle("ToggleText", "ToggleInfo", function(state)
         local Part = script.Parent
         -- Создаем парт
         local newPart = Instance.new("Part")
-        newPart.Size = Vector3.new(5, 1, 5)
-        newPart.BrickColor = BrickColor.new("Bright green")
+        newPart.Size = Vector3.new(5, 1, 1)
+        newPart.BrickColor = BrickColor.new("light orange")
         newPart.Anchored = false -- Не закрепляем, так как он будет привязан
         newPart.Parent = game.Workspace
 
@@ -44,9 +44,10 @@ Section:NewToggle("ToggleText", "ToggleInfo", function(state)
         weld.Parent = newPart
 
         -- Устанавливаем начальное смещение
-        newPart.Position = humanoidRootPart.Position
+        newPart.Position = humanoidRootPart.Position 
+        newPart.CFrame = humanoidRootPart.CFrame * CFrame.new(0, 5, 0)
     else
-        newPart:Destroy() 
+        newPart.Parent = nil
     end
 end)
 
