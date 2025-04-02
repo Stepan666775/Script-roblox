@@ -24,30 +24,31 @@ local Section = Tab:NewSection("SUS")
 
 Section:NewToggle("ToggleText", "ToggleInfo", function(state)
     if state then
-        local Part = script.Parent
-        -- Создаем парт
+        local RunService = game:GetService("RunService")
+
+-- Создаем парт
         local newPart = Instance.new("Part")
-        newPart.Size = Vector3.new(5, 1, 1)
-        newPart.BrickColor = BrickColor.new("light orange")
-        newPart.Anchored = false -- Не закрепляем, так как он будет привязан
+        newPart.Size = Vector3.new(5, 1, 5)
+        newPart.BrickColor = BrickColor.new("Bright blue")
+        newPart.Anchored = true
         newPart.Parent = game.Workspace
 
-        -- Получаем игрока и его персонажа
+-- Получаем игрока и его персонажа
         local player = game.Players.LocalPlayer
         local character = player.Character or player.CharacterAdded:Wait()
         local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
 
-        -- Создаем WeldConstraint для привязки
-        local weld = Instance.new("WeldConstraint")
-        weld.Part0 = humanoidRootPart -- К чему привязываем (игрок)
-        weld.Part1 = newPart -- Что привязываем (парт)
-        weld.Parent = newPart
+-- Функция для обновления позиции и вращения
+            local function updatePartPositionAndRotation()
+    -- Смещаем парт: 5 вверх, 3 вперед
+            newPart.CFrame = humanoidRootPart.CFrame * CFrame.new(0, -4, 3)
+        end
 
-        -- Устанавливаем начальное смещение
-        newPart.Position = humanoidRootPart.Position 
-        newPart.CFrame = humanoidRootPart.CFrame * CFrame.new(0, 5, 0)
+-- Подключаем обновление к каждому кадру
+        RunService.RenderStepped:Connect(updatePartPositionAndRotation) 
     else
-        newPart.Parent = nil
+        newPart:Destroy()
+        connection:Disconnect() -- Отключаем цикл обновления
     end
 end)
 
