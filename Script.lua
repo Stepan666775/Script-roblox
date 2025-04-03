@@ -56,30 +56,42 @@ local Section = Tab:NewSection("Тролл")
 Section:NewButton("Скример", "Вызывает скример (Локал)", function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/TheqopThe/robax/refs/heads/main/jumpscare.lua"))()
 end)
+Section:NewButton("Скример", "Вызывает скример (локал)", function()
+    While true do
+        newPart1 = Instance.new("Part")
+        newPart1.Size = Vector3.new(1, 1, 1)
+        newPart1.BrickColor = BrickColor.new("gray")
+        newPart1.Anchored = false 
+        newPart1.Parent = game.Workspace
+        newPart1.CanCollide = true
+        local function updatePartPositionAndRotation()
+        newPart1.CFrame = humanoidRootPart.CFrame * CFrame.new(0, 10, 0)
+    end
+end)
 
-Section:NewButton("Пистолет", "Выдаёт рабочий пистолет (Публик)", function()
-    local Players = game:GetService("Players")
+--Section:NewButton("Пистолет", "Выдаёт рабочий пистолет (Публик)", function()
+  --local Players = game:GetService("Players")
 
 -- Функция для создания и выдачи пистолета игроку
-    local function givePistol(player)
+ --  local function givePistol(player)
   -- Создаем новый инструмент пистолета
-    local pistol = Instance.new("Tool")
-    pistol.Name = "Pistol"
+    --local pistol = Instance.new("Tool")
+    --pistol.Name = "Pistol"
 
   -- Создаем часть пистолета (можно добавить больше деталей)
-    local handle = Instance.new("Part")
-    handle.Name = "Handle"
-    handle.Size = Vector3.new(1, 0.5, 3)
-    handle.Anchored = false
-    handle.Parent = pistol
+    --local handle = Instance.new("Part")
+    --handle.Name = "Handle"
+    --handle.Size = Vector3.new(1, 0.5, 3)
+    --handle.Anchored = false
+    --handle.Parent = pistol
 
   -- Устанавливаем Handle как Handle инструмента
-    pistol.Handle = handle
+    --pistol.Handle = handle
 
   -- Помещаем пистолет в рюкзак игрока
-    pistol.Parent = player.Backpack
-    end) 
+    --pistol.Parent = player.Backpack
+    --end) 
 
 -- Подключаемся к событию добавления игрока
-    Players.PlayerAdded:Connect(function(player)
+    --Players.PlayerAdded:Connect(function(player)
 end)
