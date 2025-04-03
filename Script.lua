@@ -25,7 +25,7 @@ end
 Players.PlayerAdded:Connect(function(player)
 
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Robojini/Tuturial_UI_Library/main/UI_Template_1"))()
-local Window = Library.CreateLib("CheeseScript V0.1", "RJTheme3") 
+local Window = Library.CreateLib("CheeseScript V0.2", "RJTheme3") 
 
 local Tab = Window:NewTab("Инфо")
 local Section = Tab:NewSection("ИНФОРМАЦИЯ")
@@ -76,10 +76,10 @@ Section:NewToggle("Палка", "Создаёт палку", function(state)
         connection:Disconnect() -- Отключаем цикл обновления
     end
 end)
-Section:NewButton("Скример", "Вызывает скример (локал)", function()
+Section:NewButton("Скример", "Вызывает скример (Локал)", function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/TheqopThe/robax/refs/heads/main/jumpscare.lua"))()
 end)
 
-Section:NewButton("Скример", "Вызывает скример (локал)", function()
+Section:NewButton("Пистолет", "Выдаёт рабочий пистолет (Публик)", function()
     givePistol(player)
 end)
