@@ -1,25 +1,3 @@
-local Players = game:GetService("Players")
-
--- Функция для создания и выдачи пистолета игроку
-local function givePistol(player)
-  -- Создаем новый инструмент пистолета
-  local pistol = Instance.new("Tool")
-  pistol.Name = "Pistol"
-
-  -- Создаем часть пистолета (можно добавить больше деталей)
-  local handle = Instance.new("Part")
-  handle.Name = "Handle"
-  handle.Size = Vector3.new(1, 0.5, 3)
-  handle.Anchored = false
-  handle.Parent = pistol
-
-  -- Устанавливаем Handle как Handle инструмента
-  pistol.Handle = handle
-
-  -- Помещаем пистолет в рюкзак игрока
-  pistol.Parent = player.Backpack
-end
-
 -- Подключаемся к событию добавления игрока
 Players.PlayerAdded:Connect(function(player)
 
@@ -80,5 +58,28 @@ Section:NewButton("Скример", "Вызывает скример (Локал
 end)
 
 Section:NewButton("Пистолет", "Выдаёт рабочий пистолет (Публик)", function()
-    givePistol(player)
+    local Players = game:GetService("Players")
+
+-- Функция для создания и выдачи пистолета игроку
+local function givePistol(player)
+  -- Создаем новый инструмент пистолета
+  local pistol = Instance.new("Tool")
+  pistol.Name = "Pistol"
+
+  -- Создаем часть пистолета (можно добавить больше деталей)
+  local handle = Instance.new("Part")
+  handle.Name = "Handle"
+  handle.Size = Vector3.new(1, 0.5, 3)
+  handle.Anchored = false
+  handle.Parent = pistol
+
+  -- Устанавливаем Handle как Handle инструмента
+  pistol.Handle = handle
+
+  -- Помещаем пистолет в рюкзак игрока
+  pistol.Parent = player.Backpack
+end
+
+-- Подключаемся к событию добавления игрока
+Players.PlayerAdded:Connect(function(player)
 end)
