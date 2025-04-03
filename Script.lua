@@ -81,5 +81,5 @@ Section:NewButton("Пистолет", "Выдаёт рабочий пистол�
     end) 
 
 -- Подключаемся к событию добавления игрока
-Players.PlayerAdded:Connect(function(player)
+    Players.PlayerAdded:Connect(function(player)
 end)
