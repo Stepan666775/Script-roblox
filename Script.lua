@@ -1,4 +1,3 @@
--- local Name = game.Players.LocalPlayer.Character.Name
 local Players = game:GetService("Players")
 
 -- Функция для создания и выдачи пистолета игроку
