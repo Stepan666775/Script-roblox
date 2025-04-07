@@ -95,4 +95,4 @@ end)
 
 -- Подключаемся к событию добавления игрока
     --Players.PlayerAdded:Connect(function(player)
-end)
+--end)
